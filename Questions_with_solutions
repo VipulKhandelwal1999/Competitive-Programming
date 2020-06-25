@@ -1,2 +1,11 @@
 1. How many square tiles of size a are required to pave the rectangle of m*n?
 -> ceil(m/a) * ceil(n/a)
+CODE:-
+ double n, m, a, x, y;
+    int result;
+    cin >> n >> m >> a;
+    x = m/a;
+    y = n/a;
+    result = ceil(x)*ceil(y);
+    
+ 2.
