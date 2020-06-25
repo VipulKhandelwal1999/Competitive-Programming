@@ -1,0 +1,2 @@
+1. How many square tiles of size a are required to pave the rectangle of m*n?
+-> ceil(m/a)*ceil(n/a)
