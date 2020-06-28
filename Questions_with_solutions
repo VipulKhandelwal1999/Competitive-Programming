@@ -95,3 +95,57 @@ int main() {
     
     return 0;
 }
+
+5. Allen has a LOT of money. He has n dollars in the bank. For security reasons, he wants to withdraw it in cash (we will not disclose the reasons here). 
+The denominations for dollar bills are 1, 5, 10, 20, 100.  What is the minimum number of bills Allen could receive after withdrawing his entire balance?
+CODE:-
+#include<bits/stdc++.h>
+#define int     long long int
+#define MOD     1000000007
+#define fastIO  ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
+#define PI      3.1415926535897932384626
+#define pb      push_back
+#define clr(x)  memset(x, 0, sizeof(x))
+const int N=1000001;
+using namespace std;
+int gcd(int a,int b){if(a==0)return b;return gcd(b%a,a);}
+int lcm(int a,int b){return (max(a,b)/gcd(a,b))*min(a,b);}
+int powermodm(int x,int n,int M){int result=1;while(n>0){if(n % 2 ==1)result=(result * x)%M;x=(x*x)%M;n=n/2;}return result;}
+int gcdExtended(int a, int b, int *x, int *y){if (a == 0){*x = 0, *y = 1;return b;}int x1, y1;int gcd = gcdExtended(b % a, a, &x1, &y1);*x = y1 - (b / a) * x1;*y = x1;return gcd;}
+int modInverse(int a, int m){int x, y;int g = gcdExtended(a, m, &x, &y);if (g != 1)return -1;else{int res = (x % m + m) % m;return res;}}
+bool isPrime(int a){if(a==1) return false;if(a==2) return true;if(a%2==0) return false;int root=sqrt(a);for(int i=3;i<=(int)root;i+=2){if(a%i==0)return false;}return true;}
+
+// int minCoins(int coinList[], int n, int value) {
+//   int coins[value+1];       //store minimum coins for value i
+
+//   if(value == 0)
+//       return 0;              //for value 0, it needs 0 coin
+
+//   coins[0] = 0;
+
+//   for (int i=1; i<=value; i++)
+//       coins[i] = INT_MAX;            //initially all values are infinity except 0 value
+
+//   for (int i=1; i<=value; i++) {      //for all values 1 to value, find minimum values
+//       for (int j=0; j<n; j++)
+//          if (coinList[j] <= i) {
+//             int tempCoins = coins[i-coinList[j]];
+//          if (tempCoins != INT_MAX && tempCoins + 1 < coins[i])
+//             coins[i] = tempCoins + 1;
+//       }
+//   }
+//   return coins[value];
+// }
+
+main()
+{
+    fastIO;
+    int n, count = 0;
+    int arr[5] = {1, 5, 10, 20, 100};
+    cin >> n;
+    for(int i=4; i>-1; i--){
+        count += (n/arr[i]);
+        n = n - ((n/arr[i])*arr[i]);
+    }
+    cout << count;
+}
