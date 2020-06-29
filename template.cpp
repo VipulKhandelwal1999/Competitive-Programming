@@ -14,13 +14,11 @@ int gcdExtended(int a, int b, int *x, int *y){if (a == 0){*x = 0, *y = 1;return 
 int modInverse(int a, int m){int x, y;int g = gcdExtended(a, m, &x, &y);if (g != 1)return -1;else{int res = (x % m + m) % m;return res;}}
 bool isPrime(int a){if(a==1) return false;if(a==2) return true;if(a%2==0) return false;int root=sqrt(a);for(int i=3;i<=(int)root;i+=2){if(a%i==0)return false;}return true;}
 
-int main(void)
+main()
 {
     fastIO;
     int t;
     cin >> t;
     while(t--){
-
     }
-    return 0;
 }
